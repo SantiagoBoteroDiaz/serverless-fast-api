@@ -1,0 +1,19 @@
+org: serverlesssanti
+app: gestiondeinventario
+service: gestiondeinventario
+
+provider:
+  name: aws
+  runtime: python3.13
+  region: us-east-1
+
+functions:
+  api:
+    handler: handler.handler
+    events:
+      - http:
+          path: /
+          method: ANY
+      - http:
+          path: /{proxy+}
+          method: ANY
